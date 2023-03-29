@@ -27,7 +27,7 @@ struct SelectedCard: View {
                 .font(.system(size: 34))
                 .fontWeight(.semibold)
             
-            CardView(bgColor: .blue)
+            CardView(bgColor: .black)
             
             Text("The money will be\nautomatically debited\nfrom your card")
                 .multilineTextAlignment(.center)

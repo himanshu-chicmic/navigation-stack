@@ -42,8 +42,8 @@ struct CardView: View {
                             .frame(width: 40, height: 40)
                         
                         AnyShape(Circle())
-                            .frame(width: 40, height: 40)
-                            .padding(.leading, 24)
+                            .frame(width: 34, height: 34)
+                            .padding(.leading, 32)
                             .opacity(0.5)
                     }
                     
@@ -60,7 +60,7 @@ struct CardView: View {
             }
             .padding()
             .foregroundColor(.white)
-            .frame(maxWidth: .infinity, maxHeight: 200)
+            .frame(maxWidth: .infinity, minHeight: 200,maxHeight: 250)
         }
         .background(bgColor)
         .cornerRadius(12)

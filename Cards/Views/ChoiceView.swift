@@ -15,6 +15,7 @@ struct ChoiceView: View {
     var body: some View {
         VStack {
                 AppbarView(currentView: self)
+                .padding()
             
             HStack {
                 Text("Choose illustration")
@@ -33,23 +34,28 @@ struct ChoiceView: View {
                 })
                 .padding(.vertical)
             }
-            .padding(.vertical)
+            .padding()
             
+            ScrollView {
+                Button(action: {
+                    router.push(.C)
+                }, label: {
+                    IllustrationView(title: "Nature", image: "image2", price: "54")
+                        .padding()
+                })
+               
+                Button(action: {
+                    router.push(.C)
+                }, label: {
+                    IllustrationView(title: "Form", image: "image2", price: "67")
+                        .padding()
+                })
+            }
             
-            Button(action: {
-                router.push(.C)
-            }, label: {
-                Image(systemName: "arrow.right")
-                    .padding(12)
-                    .foregroundColor(.black)
-                    .background(.purple.opacity(0.5))
-                    .cornerRadius(10)
-            })
-            .padding(.vertical)
-            
-            Spacer()
+         
+
+        
         }
-        .padding()
         .navigationBarBackButtonHidden(true)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class Router<T: Hashable>: ObservableObject {
     @Published var paths: [T] = []

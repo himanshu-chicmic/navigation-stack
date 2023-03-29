@@ -10,17 +10,18 @@ import SwiftUI
 struct AppbarView: View {
     
     @State var currentView: Any?
+    @State var isPressed = false
     
     var body: some View {
         HStack {
             Button(action: {
                 if let currentView = currentView as? ApplyView {
                     
-                    currentView.router.pop2()
+                    currentView.router.pop()
                     
                 }
                 else if let currentView = currentView as? SelectedCard {
-                    currentView.router.pop2()
+                    currentView.router.pop()
                     
                 }
                 else if let currentView = currentView as? ChoiceView {
@@ -36,31 +37,57 @@ struct AppbarView: View {
             
             Spacer()
             
-            ZStack(alignment: .leading) {
+            Button(action: {
                 
-                ZStack() {
-                    
-                    Image(systemName: "ellipsis")
-                        .foregroundColor(.black)
-                        .rotationEffect(.degrees(90))
-                        .padding(.leading, 35)
-                        
+                withAnimation{
+                    isPressed.toggle()
                 }
-                .frame(width: 74, height: 44)
-                .background(.purple.opacity(0.5))
-                .cornerRadius(100)
                 
-                Image("usericon")
-                    .resizable()
-                    .frame(width: 42, height: 42)
-                    .clipShape(Circle())
-                    .padding(.leading, 2)
-            }
+            }, label: {
+                ZStack(alignment: isPressed ? .trailing : .leading) {
+                    
+                    if isPressed {
+                        ZStack() {
+                            
+                            Image(systemName: "moon.fill")
+                                .foregroundColor(.white)
+                                .padding(.trailing, 35)
+                                
+                        }
+                        .frame(width: 84, height: 44)
+                        .background(.purple.opacity(0.5))
+                        .cornerRadius(100)
+                    }else {
+                        ZStack() {
+                            
+                            Image(systemName: "sun.max.fill")
+                                .foregroundColor(.white)
+                                .padding(.leading, 35)
+                                
+                        }
+                        .frame(width: 84, height: 44)
+                        .background(.purple.opacity(0.5))
+                        .cornerRadius(100)
+                    }
+                    
+                    Image(isPressed ? "usericon" : "usericon-light")
+                        .resizable()
+                        .frame(width: 42, height: 42)
+                        .clipShape(Circle())
+                        .padding(.leading, 2)
+                        .padding(.trailing, 2)
+                    
+                }
+            })
+            
         }
     }
 }
 
 struct AppbarView_Previews: PreviewProvider {
+    
+    
+    
     static var previews: some View {
         AppbarView()
     }
