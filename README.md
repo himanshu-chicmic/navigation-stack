@@ -1,3 +1,3 @@
 # swift-ui
-- navigation stack (A->B->C->D) (D->B->A) (C->A)
+- navigation stack
 - localization for arabic(rtl) and hindi
